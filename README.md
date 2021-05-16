@@ -1,5 +1,9 @@
 ### MedLane
 ***
+#### Setup
+```text
+pip install -r requirements.txt
+```
 #### How to run
 
 ##### train on the entire dataset
