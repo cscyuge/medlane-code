@@ -26,8 +26,8 @@ class DCMN_Config():
         self.num_choices = 8
         self.learning_rate = 5e-5
         self.dcmn_learning_rate = 1e-5
-        self.num_train_epochs = 6.0
-        self.num_dcmn_epochs = 36.0
+        self.num_train_epochs = 36.0
+        self.num_dcmn_epochs = 6.0
         self.model_name = 'output_dcmn.bin'
 
 
