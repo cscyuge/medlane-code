@@ -187,7 +187,7 @@ def get_dcmn_data_from_gt(src_words, tar_words, abbrs, max_pad_length, max_dcmn_
     sentences = []
     labels = []
     key_choices = []
-    seq_src_words = src_words
+    seq_src_words = src_words[:]
     indics = []
     key_ans = {}
 
@@ -235,7 +235,7 @@ def get_dcmn_data_from_gt(src_words, tar_words, abbrs, max_pad_length, max_dcmn_
 
 def get_dcmn_data_from_step1(src_words, masks, k_a, abbrs, max_pad_length, max_dcmn_seq_length, tokenizer):
     sentences = []
-    seq_src_words = src_words
+    seq_src_words = src_words[:]
     labels = []
     key_choices = []
     for i, mask in enumerate(masks):
@@ -356,7 +356,7 @@ def build_dataset(config):
 
 
 def build_dataset_eval(config):
-    abbrs_path = './data/abbrs-all-uncased.pkl'
+    abbrs_path = './data/abbrs-all-cased.pkl'
     # txt_path = './data/test(2030).txt'
     txt_path = os.path.join(config.data_dir, config.test_file)
 

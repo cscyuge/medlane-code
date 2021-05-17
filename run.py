@@ -68,7 +68,7 @@ def build_dcmn(config):
     eval_dataloader = build_eval_iterator(eval_seq_dataset, eval_dcmn_dataset, config)
 
     num_train_steps = int(
-        len(train_seq_dataset) / config.batch_size / config.gradient_accumulation_steps * config.num_train_epochs)
+        len(train_seq_dataset) / config.batch_size / config.gradient_accumulation_steps * (config.num_train_epochs-config.num_dcmn_epochs))
     t_total = num_train_steps
     config.t_total = t_total
 
@@ -78,7 +78,7 @@ def build_dcmn(config):
             dcmn_t_total += len(dcmn_batches) // config.batch_size
             if len(dcmn_batches) % config.batch_size > 0:
                 dcmn_t_total += 1
-    dcmn_t_total *= config.num_train_epochs
+    dcmn_t_total *= config.num_dcmn_epochs
 
     model = BertForMultipleChoiceWithMatch.from_pretrained(config.bert_model, num_choices=config.num_choices)
     model.to(config.dcmn_device)
